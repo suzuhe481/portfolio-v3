@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Plagiata";
+  src: url("/fonts/Plagiata.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-plagiata {
+  font-family: "Plagiata", sans-serif;
+}
+
+/* General animation class */
+.animate-all {
+  transition: all 0.2s ease-in-out;
+}
