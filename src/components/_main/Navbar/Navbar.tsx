@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import clsx from "clsx";
 
 // Link items in navbar
@@ -90,16 +89,20 @@ export const Navbar = () => {
                     key={item.label}
                     className="p-4 md:py-0 border-b-2 border-[#444444] md:border-0 text-xl md:text-xl"
                   >
-                    <Link href={item.href} onClick={() => setMenuOpen(false)}>
+                    <a
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block w-full"
+                    >
                       {item.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
 
               {/* Hamburger menu: Small screens only */}
               <button
-                className="md:hidden text-2xl"
+                className="md:hidden text-2xl cursor-pointer"
                 onClick={() => setMenuOpen((prev) => !prev)}
                 aria-label="Toggle Menu"
               >
