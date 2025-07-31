@@ -21,7 +21,10 @@ export function Hero() {
   };
 
   return (
-    <div className="relative mx-auto flex flex-col items-center justify-center bg-black">
+    <div
+      id="home"
+      className="relative mx-auto flex flex-col items-center justify-center bg-[#242424] min-h-[calc(100vh-8rem)] scroll-mt-20"
+    >
       <div className="px-4 py-10 md:py-10">
         <h1 className="relative z-10 mx-auto max-w-4xl py-2 text-center font-plagiata font-bold text-slate-200 text-6xl md:text-8xl dark:text-slate-300 animate-all">
           {"Hi! My name is Hector Suazo".split(" ").map((word, index) => (
