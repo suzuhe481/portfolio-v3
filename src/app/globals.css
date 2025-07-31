@@ -15,3 +15,63 @@
 .animate-all {
   transition: all 0.2s ease-in-out;
 }
+
+/* Shadow classes */
+.typescript-shadow:hover {
+  box-shadow: 0 10px 15px -3px #007accc7;
+}
+
+.react-shadow:hover {
+  box-shadow: 0 10px 15px -3px #61dafbc7;
+}
+
+.html-shadow:hover {
+  box-shadow: 0 10px 15px -3px #e44d26c7;
+}
+
+.javascript-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f0db4fc7;
+}
+
+.tailwind-shadow:hover {
+  box-shadow: 0 10px 15px -3px #38bdf8c7;
+}
+
+.express-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.node-shadow:hover {
+  box-shadow: 0 10px 15px -3px #5fa04ec7;
+}
+
+.mongodb-shadow:hover {
+  box-shadow: 0 10px 15px -3px #4faa41c7;
+}
+
+.postgres-shadow:hover {
+  box-shadow: 0 10px 15px -3px #336791c7;
+}
+
+.linux-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.git-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f34f29c7;
+}
+
+.github-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.framer-motion-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f0db4fc7;
+}
+
+.godot-shadow:hover {
+  box-shadow: 0 10px 15px -3px #478cbfc7;
+}
+
+/* End of Shadow classes  */
+
