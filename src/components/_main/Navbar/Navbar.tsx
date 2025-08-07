@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 
+import { MenuButton } from "./MenuButton/MenuButton";
+
 // Link items in navbar
 const menuItems = [
   { label: "Home", href: "#home" },
@@ -101,13 +103,10 @@ export const Navbar = () => {
               </ul>
 
               {/* Hamburger menu: Small screens only */}
-              <button
-                className="md:hidden text-2xl cursor-pointer"
+              <MenuButton
+                menuOpen={menuOpen}
                 onClick={() => setMenuOpen((prev) => !prev)}
-                aria-label="Toggle Menu"
-              >
-                {menuOpen ? "✕" : "☰"}
-              </button>
+              />
             </div>
           </div>
         </nav>
