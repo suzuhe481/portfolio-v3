@@ -15,7 +15,7 @@ export function Projects() {
 
   // Stores the groups of cards to be separated into pages
   const [cardGroups, setCardGroups] = useState<(typeof projects)[number][][]>(
-    () => chunkArray(projects, 6)
+    () => chunkArray(projects, 8)
   );
 
   const id = useId();
