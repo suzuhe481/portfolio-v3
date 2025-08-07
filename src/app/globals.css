@@ -78,3 +78,16 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* This removes css styles from elements with the classname markdown */
+/* Used to display markdown files. */
+.markdown > * {
+  all: revert;
+  margin: 0;
+}
+
+/* A custom thin scroll bar with a black thumb and white track */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #f1f1f1;
+}
