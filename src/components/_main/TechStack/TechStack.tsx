@@ -18,6 +18,7 @@ import {
 } from "@/assets/icons/TechStackIcons";
 import { Card } from "./Card/Card";
 import { CardContainer } from "./CardContainer/CardContainer";
+import { FixedBackground } from "../FixedBackground/FixedBackground";
 
 import { ITechStackDataProps } from "@/types";
 
@@ -82,22 +83,13 @@ const techStackData: ITechStackDataProps[] = [
 
 export const TechStack = () => {
   return (
-    <div
-      id="tech"
-      className="py-12 min-h-screen scroll-mt-12"
-      style={{
-        backgroundImage: 'url("/background/waves-background.svg")',
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        paddingLeft: "1px", // Padding and negative margin removes rendering artifact along border of svg.
-        paddingTop: "1px",
-        marginLeft: "-1px",
-        marginTop: "-1px",
-      }}
-    >
-      <div className="flex flex-col items-center text-white text-6xl pt-12 underline font-plagiata">
+    <div id="tech" className="relative py-12 min-h-screen scroll-mt-12">
+      {/* Background SVG Image */}
+      <FixedBackground svgPath="/background/waves-background.svg" />
+
+      <h1 className="flex flex-col items-center text-white text-6xl pt-12 underline font-plagiata">
         Tech Stack
-      </div>
+      </h1>
       <div className="flex justify-center items-center">
         {/* Tech Icons*/}
         <CardContainer className="font-plagiata font-bold">
@@ -108,7 +100,7 @@ export const TechStack = () => {
       </div>
 
       {/* Bottom buffer. Padding is already set in main container to prevent rendering artifact */}
-      <div className="pb-36" />
+      <div className="pb-24" />
     </div>
   );
 };
