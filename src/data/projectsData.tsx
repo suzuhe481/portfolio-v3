@@ -3,6 +3,9 @@
  * as a code block.
  * Start each line at the leftmost start of the object, keeping the start in line with the object's
  * closing bracket.
+ *
+ * For line break: Add...
+ * \n &nbsp;
  */
 
 export const projects = [
@@ -26,8 +29,9 @@ export const projects = [
   technology. I used ChatGPT to do a long brainstorming session to plan the entire process and 
   split it up into phases. Then I'll build the file structure, add detailed file/function 
   descriptions, and have Copilot generate the files. This has been a very hit/miss project 
-  where it sometimes gets some nuanced parts wrong, and I have to debug to see how it went wrong. 
-  
+  where it sometimes gets some nuanced parts wrong, and I have to debug to see how it went wrong.
+  \n &nbsp;
+
   A secondary goal was to build this project without needing to learn Three.js, but I've had to 
   learn some basics in order to debug. The project is still in progress, but my main takeaway is 
   that AI still cannot handle complex 3D design in a way where it can be easily expanded on. You can 
@@ -66,6 +70,7 @@ export const projects = [
     description: `
   Organize your tasks in a Jira like table or a Trello like Kanban board. Add/edit/delete tasks, 
   or even add new columns to be more organized!
+  \n &nbsp;
 
   This is a React application that was originally a take home assignment, but I definitely 
   enjoyed working on this and implementing Dnd-kit for the drag and drop functionality of the cards 
@@ -104,6 +109,7 @@ export const projects = [
     description: `
   My first fullstack application of a blogging website. Users can browse through blogs, 
   or create an account to be able to create their own blogs with a rich text editor. 
+  \n &nbsp;
 
   With an Express backend connected to a MongoDB database, users can create and then email verify 
   their account, which is handled by JWTs. Express sessions 
@@ -132,6 +138,7 @@ export const projects = [
     description: `
   This is a fan project, so ignore references to things you might not understand. This project uses 
   the recharts library to create a real-time, interactive chart that is made by the user.
+  \n &nbsp;
 
   After starting the timer, users can change the value on a scale between 0-10, and the chart will 
   update to add a point at that time of that value. Users can customize their line color, add notes 
@@ -147,6 +154,7 @@ export const projects = [
     description: `
   This is Battleship. This is a HTML, CSS, JavaScript project bundled with Webpack, but I built in 
   a React way with components. 
+  \n &nbsp;
 
   Users can play against an AI opponent. Place your ships, and guess where each other placed their ships. 
   I made two difficulty levels, Easy and Realistic, where Easy is just the computer guessing 
@@ -176,6 +184,7 @@ export const projects = [
     description: `
   My first attempt at making a simple social media site with Node/Express and using EJS to 
   create HTML templates.
+  \n &nbsp;
 
   Users can create an account and choose their membership. Member, Member+, or Admin, where each had 
   different permissions. Though you needed a special password to become a Member+ or Admin.
