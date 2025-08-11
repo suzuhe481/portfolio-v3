@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { motion } from "motion/react";
 import { ContainerTextFlip } from "@/components/animated/ContainerTextFlip/ContainerTextFlip";
 import { IContainerTextFlipProps } from "@/components/animated/ContainerTextFlip/ContainerTextFlip";
@@ -83,8 +85,12 @@ export function Hero() {
           >
             Explore My Projects
           </a>
+          <Link
+            href="/fun"
+            className="text-center w-60 transform rounded-lg bg-sky-700 px-6 py-2 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 cursor-pointer"
+          >
             Explore My Hobbies
-          </button>
+          </Link>
         </motion.div>
       </div>
     </div>
