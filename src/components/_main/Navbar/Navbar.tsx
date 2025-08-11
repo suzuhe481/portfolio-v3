@@ -20,6 +20,10 @@ export const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false); // Determines whether menu should be display block/hidden
 
+  // Determines whether to show the navbar based on scroll direction
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const menuRef = useRef<HTMLUListElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -60,8 +64,35 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Used to hide/show navbar when scrolling down/up
+  useEffect(() => {
+    const controlNavbar = () => {
+      // Compare last scroll position with current scroll position.
+      // Scrolling down
+      if (window.scrollY > lastScrollY) {
+        setShow(false);
+        setMenuOpen(false); // Hides navmenu if open
+      }
+      // Scrolling up
+      else {
+        setShow(true);
+      }
+      // Store current scroll position
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header className="sticky top-0 w-full z-50 shadow text-white">
+    <header
+      className={`sticky top-0 w-full z-50 shadow text-white transition-trasform duration-300 ${
+        show ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="relative">
         {/* Background behind the translucent navbar */}
         <div className="absolute inset-0 bg-[#000000bd] z-[-1]" />
