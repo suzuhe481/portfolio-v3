@@ -17,15 +17,10 @@ export const ProjectCard = ({
   return (
     <motion.div
       layoutId={`card-container-${card.title}-${id}`}
-      layout
       onClick={() => setActive(card)}
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{
-        duration: 0.4,
-        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-      }}
       className="shrink-0 w-46 sm:w-66 p-4 lg:p-2 rounded-xl hover:bg-neutral-50 cursor-pointer transition-colors group"
     >
       <div className="flex gap-4 flex-col w-full">
