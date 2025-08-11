@@ -77,10 +77,12 @@ export function Hero() {
           }}
           className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
         >
-          <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-400 hover:text-white dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900 cursor-pointer">
+          <a
+            href="#projects"
+            className="text-center w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-400 hover:text-white dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900 cursor-pointer"
+          >
             Explore My Projects
-          </button>
-          <button className="w-60 transform rounded-lg bg-sky-700 px-6 py-2 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 cursor-pointer">
+          </a>
             Explore My Hobbies
           </button>
         </motion.div>
