@@ -11,6 +11,17 @@
   font-family: "Plagiata", sans-serif;
 }
 
+@font-face {
+  font-family: "Geist-Mono";
+  src: url("/fonts/GeistMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-geist-mono {
+  font-family: "Geist-Mono", monospace;
+}
+
 /* General animation class */
 .animate-all {
   transition: all 0.2s ease-in-out;
@@ -84,6 +95,12 @@ html {
 .markdown > * {
   all: revert;
   margin: 0;
+}
+
+/* Heading styles for markdown */
+.markdown > h2,
+.markdown > h3 {
+  font-family: "Plagiata", sans-serif;
 }
 
 /* A custom thin scroll bar with a black thumb and white track */
