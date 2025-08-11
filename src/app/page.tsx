@@ -5,6 +5,7 @@ import { Hero } from "@/components/_main/Hero/Hero";
 import { TechStack } from "@/components/_main/TechStack/TechStack";
 import { Projects } from "@/components/_main/Projects/Projects";
 import { Experience } from "@/components/_main/Experience/Experience";
+import { Footer } from "@/components/_main/Footer/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <TechStack />
       <Projects />
       <Experience />
+      <Footer />
     </>
   );
 }
