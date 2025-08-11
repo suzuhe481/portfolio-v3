@@ -181,7 +181,7 @@ export const ExpandedProjectCard = ({
             exit={{ opacity: 0 }}
             className="text-neutral-600 text-lg md:text-xl lg:text-2xl h-fit flex flex-col px-0 items-start gap-4 dark:text-neutral-400 font-sans"
           >
-            <div className="markdown">
+            <div className="markdown font-geist-mono">
               <Markdown>{active.description}</Markdown>
             </div>
           </motion.div>
