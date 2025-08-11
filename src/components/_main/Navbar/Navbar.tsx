@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
+import Link from "next/link";
 
 import { MenuButton } from "./MenuButton/MenuButton";
 
@@ -101,7 +102,9 @@ export const Navbar = () => {
           <div className="w-full px-4 sm:px-6 lg:px-8 animate-all">
             <div className="flex items-center justify-between py-6">
               {/* Logo */}
-              <div className="text-xl font-bold">Logo</div>
+              <Link href="/" className="text-xl font-bold">
+                Hector Suazo
+              </Link>
 
               {/* Menu Items */}
               <ul
