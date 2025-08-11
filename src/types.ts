@@ -26,3 +26,8 @@ export interface IProjectCardsDataProps {
   >;
   id: string;
 }
+
+export interface IExperienceDataProps {
+  title: string;
+  content: string;
+}
