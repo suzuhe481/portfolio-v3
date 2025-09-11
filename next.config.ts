@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
   ...(isProd && {
     allowedDevOrigins: [process.env.PRODUCTION_URL!],
   }),
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: `${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_S3_REGION}.amazonaws.com`,
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
