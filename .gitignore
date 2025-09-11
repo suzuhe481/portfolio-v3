@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Folder that stores images to get uploaded. Not used in prod.
+/upload_images

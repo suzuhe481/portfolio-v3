@@ -87,14 +87,11 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 shadow text-black transition-trasform duration-300 h-20 border-b border-black ${
+      className={`sticky top-0 w-full z-50 shadow text-black transition-trasform duration-300 h-20 bg-sky-300 border-b border-black ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="relative">
-        {/* Background behind the translucent navbar */}
-        <div className="absolute inset-0  z-[-1]" />
-
         <nav className="w-full">
           <div className="w-full px-4 sm:px-6 lg:px-8 animate-all">
             <div className="flex items-center justify-between py-6">
