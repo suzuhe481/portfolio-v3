@@ -95,10 +95,10 @@ export const Hero = () => {
         className="text-center font-geist-mono w-1/2 text-sm md:text-2xl"
       >
         <p>
-          I enjoy many hobbies, both indoor and outdoor. I definitely consider
-          myself more reserved/introverted. I enjoy my quiet time indoors, but I
-          also enjoy more adventurous activities outdoors. The floating icons
-          represent my hobbies or just things I&apos;ve done at least once.
+          These bubbles represent my hobbies and interests! Though some of these
+          are things I&apos;ve only done once. Check out some galleries below of
+          pictures I&apos;ve taken during my travels and props/projects
+          I&apos;ve done.
         </p>
 
         {/* Button Container */}
@@ -127,7 +127,7 @@ export const Hero = () => {
                 <a href="/fun/travel">Travel</a>
               </Button3D>
               <Button3D>
-                <a href="/fun/props">Props</a>
+                <a href="/fun/projects">Projects</a>
               </Button3D>
             </div>
             <div className="flex flex-row justify-center items-center w-full">
