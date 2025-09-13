@@ -29,7 +29,7 @@ const SwiperFullscreen = ({
   setActiveIndex,
 }: ISwiperFullscreenProps) => {
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 flex flex-col">
+    <div className="fixed inset-0 z-9999 bg-black/80 flex flex-col">
       <button
         onClick={() => setFullscreen(false)}
         className="absolute top-4 right-4 text-white text-xl z-50 cursor-pointer"
