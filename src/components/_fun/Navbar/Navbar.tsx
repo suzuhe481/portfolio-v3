@@ -87,7 +87,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 shadow text-black transition-trasform duration-300 h-20 bg-sky-300 border-b border-black ${
+      className={`sticky top-0 w-full z-2000 shadow text-black transition-trasform duration-300 h-20 bg-sky-300 border-b border-black ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
