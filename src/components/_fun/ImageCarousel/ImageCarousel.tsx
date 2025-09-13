@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import type { Swiper as SwiperClass } from "swiper";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 // import Image from "next/image";
 import SwiperMain from "./SwiperMain/SwiperMain";
@@ -44,6 +45,9 @@ const ImageCarousel = () => {
 
   // Context
   const { location, country } = useTravelContext();
+
+  // Page scrolling is lock when fullscreen.
+  useScrollLock(fullscreen);
 
   // Fetching new data on location change.
   useEffect(() => {
