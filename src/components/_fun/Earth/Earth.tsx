@@ -145,6 +145,7 @@ export const Earth = () => {
 
   return (
     <motion.div
+      id="earth-container"
       initial={{ height: minimizeEarth ? 0 : "500px" }}
       animate={{ height: minimizeEarth ? 0 : "500px" }}
     >
