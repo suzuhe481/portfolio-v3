@@ -133,6 +133,11 @@ const SvgMarker = ({
     return latLngToVector3(lat, lng, earthRadius);
   }, [lat, lng]);
 
+  // Gets the #earth-container element.
+  // This gets used in the marker component so that it is contained within the bounds of the earth container
+  // and not the entire page.
+  const earthContainer = document.querySelector("#earth-container");
+
   // Controls the opacity of the marker depending on whether it's in view.
   // Fades the marker when approaching edges of earth.
   useFrame(() => {
@@ -171,6 +176,8 @@ const SvgMarker = ({
 
     // Single click action performed after double click delay.
     clickTimerRef.current = setTimeout(() => {
+      if (!isHovered) return;
+
       if (marker.type === "city") {
         const location = marker.name;
         updateLocation(location);
@@ -258,7 +265,15 @@ const SvgMarker = ({
 
   return (
     <group ref={markerRef} position={localPos}>
-      <Html center>
+      <Html
+        center
+        portal={
+          earthContainer
+            ? (earthContainer as unknown as RefObject<HTMLElement>)
+            : undefined
+        }
+        zIndexRange={isHovered ? [500, 500] : [0, 0]}
+      >
         <motion.div
           ref={markerSvgRef}
           style={{ cursor: "pointer", opacity }}
@@ -267,17 +282,24 @@ const SvgMarker = ({
           whileHover={{ scale: 1.2 }}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
-          onTapStart={() => setIsHovered(true)}
+          onTapStart={() => {
+            setTimeout(() => setIsHovered(true), 100);
+          }}
           onTapCancel={() => setIsHovered(false)}
         >
           <MarkerIcon
-            className={`relative ${markerColor} ${
+            className={`relative z-10 ${markerColor} ${
               type === "group" ? "w-10" : "w-6"
             }`}
           />
         </motion.div>
-        {isHovered && <MarkerTitle marker={marker} />}
       </Html>
+      {/* The MarkerTitle is still absolutely positioned relative to the MarkerIcon
+      because both Htmls share the same <group> and position. 
+      An Html is anchored to the 3D position of its parent (<group>).
+      So when projected into screen space, both Htmls are positioned at the same spot.
+      But the absolute styles on MarkerTitle adjusts it's position. */}
+      {isHovered && <MarkerTitle marker={marker} />}
     </group>
   );
 };
@@ -305,6 +327,11 @@ const MarkerIcon = ({ className, style }: ISVGProps) => (
  * @returns {JSX.Element}
  */
 const MarkerTitle = ({ marker }: { marker: IEarthMarker }) => {
+  // Gets the #earth-container element.
+  // This gets used in the marker component so that it is contained within the bounds of the earth container
+  // and not the entire page.
+  const earthContainer = document.querySelector("#earth-container");
+
   let location;
   let country;
   let title;
@@ -319,15 +346,26 @@ const MarkerTitle = ({ marker }: { marker: IEarthMarker }) => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ duration: 0.2 }}
-      className={`absolute px-3 py-1 text-md border-b-1 left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap bottom-full mb-2`}
+    <Html
+      portal={
+        earthContainer
+          ? (earthContainer as unknown as RefObject<HTMLElement>)
+          : undefined
+      }
+      // Will be a higher z index that the zIndexRange of the SvgMarker to
+      // prevent it being hidden by other markers.
+      zIndexRange={[1000, 1000]}
     >
-      {title}
-    </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.2 }}
+        className={`absolute px-3 py-1 text-md border-b-1 left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap bottom-full mb-2`}
+      >
+        {title}
+      </motion.div>
+    </Html>
   );
 };
 
