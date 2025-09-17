@@ -83,7 +83,7 @@ const techStackData: ITechStackDataProps[] = [
 
 export const TechStack = () => {
   return (
-    <div id="tech" className="relative py-12 min-h-screen scroll-mt-12">
+    <div id="tech" className="relative py-12 min-h-screen">
       {/* Background SVG Image */}
       <FixedBackground svgPath="/background/waves-background.svg" />
 
