@@ -49,7 +49,7 @@ export const AnimatedCardContainer = ({
       </AnimatePresence>
 
       {/* Project Card Container */}
-      <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth w-full pt-8 custom-scrollbar py-8">
+      <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth w-full custom-scrollbar py-8">
         <ul className="flex gap-4">{children}</ul>
       </div>
     </>
