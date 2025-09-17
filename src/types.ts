@@ -92,3 +92,19 @@ export interface IImageRow {
   thumbnailImage: string;
   description: string;
 }
+
+export interface IBuildImagesData {
+  main_description: string;
+  imagesData: IImageRow[];
+}
+
+export const BUILDS = [
+  "Assassin's Tomahawk",
+  "Gambol Shroud",
+  "Leviathan Axe",
+  "Stormbreaker Axe",
+  "Aku Aku Mask",
+  "PS5 DualSense Mod",
+];
+
+export type IBuildProps = (typeof BUILDS)[number];

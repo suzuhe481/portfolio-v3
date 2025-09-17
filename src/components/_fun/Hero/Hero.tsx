@@ -127,7 +127,7 @@ export const Hero = () => {
                 <a href="/fun/travel">Travel</a>
               </Button3D>
               <Button3D>
-                <a href="/fun/projects">Projects</a>
+                <a href="/fun/builds">Builds</a>
               </Button3D>
             </div>
             <div className="flex flex-row justify-center items-center w-full">
