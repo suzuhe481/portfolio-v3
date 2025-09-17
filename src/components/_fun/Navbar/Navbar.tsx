@@ -9,7 +9,7 @@ import { MenuButton } from "./MenuButton/MenuButton";
 // Link items in navbar
 const menuItems = [
   { label: "Travel", href: "/fun/travel" },
-  { label: "Projects", href: "/fun/projects" },
+  { label: "Builds", href: "/fun/builds" },
 ];
 
 export const Navbar = () => {
