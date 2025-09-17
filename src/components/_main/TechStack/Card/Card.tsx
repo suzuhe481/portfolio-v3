@@ -1,8 +1,12 @@
 "use client";
 
+import { useMemo, createElement } from "react";
 import { motion } from "framer-motion";
 
 import { ITechStackDataProps } from "@/types";
+
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 // Mapping name to their shadow css class in globals.css
 const shadowClasses = {
@@ -22,34 +26,71 @@ const shadowClasses = {
   Godot: "godot-shadow",
 };
 
-export const Card = ({ name, icon }: ITechStackDataProps) => {
+// Adds the overlay prop.
+interface ICardProps extends ITechStackDataProps {
+  overlay?: boolean;
+}
+
+export const Card = ({ name, icon, overlay }: ICardProps) => {
   const Icon = icon;
+
+  // Icon is memorized to prevent re-rendering and delay when dragging cards with dndkit.
+  const MemoizedIcon = useMemo(
+    () => <div className="w-12 md:w-24">{createElement(Icon)}</div>,
+    [Icon]
+  );
 
   const shadowClass = shadowClasses[name as keyof typeof shadowClasses];
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: name });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  // Base card styles + overlay style when dragged
+  // isDragging affects the style of the copied underneath card, not the actual dragged card..
+  const cardStyles = `${
+    isDragging ? "opacity-70" : ""
+  } bg-gray-800/50 backdrop-blur-sm border border-gray-700 cursor-grab rounded-xl p-4 flex flex-col items-center justify-center shadow-lg ${shadowClass} touch-none group`;
+
+  // Dragged card
+  const draggedCardStyles = `rotate-6 animate-pulse cursor-grabbing ${cardStyles}`;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.4,
-        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-      }}
-    >
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <motion.div
-        whileHover={{ y: -5, scale: 1.03 }}
-        whileTap={{ y: 5, scale: 1.03 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className={`bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-4 flex flex-col items-center justify-center shadow-lg ${shadowClass} group`}
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.4,
+          scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+        }}
       >
-        <div className="relative mb-3">
-          <Icon className="w-12 md:w-24" />
-        </div>
-        <span className="text-gray-200 font-medium text-center group-hover:text-cyan-400 transition-colors">
-          {name}
-        </span>
+        <motion.div
+          whileHover={{ y: -5, scale: 1.03 }}
+          whileTap={{ y: 5, scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className={overlay ? draggedCardStyles : cardStyles}
+        >
+          <div className="relative mb-3">
+            {/* <MemoizedIcon className="w-12 md:w-24" /> */}
+            {MemoizedIcon}
+          </div>
+          <span className="text-gray-200 font-medium text-center group-hover:text-cyan-400 transition-colors">
+            {name}
+          </span>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
