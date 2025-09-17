@@ -77,9 +77,9 @@ export const ExpandedProjectCard = ({
       {/* Expanded Project Card */}
       <motion.div
         ref={ref}
-        className="w-[80vw] md:w-[70vw] min-h-[70vh] max-h-[80vh] md:h-[70vh] animate-all flex flex-col lg:flex-row bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden p-4"
+        className="w-[80vw] md:w-[80vw] min-h-[70vh] max-h-[80vh] md:h-[70vh] animate-all flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden p-4"
       >
-        <div className="flex flex-col">
+        <div className="md:pr-4 flex flex-col">
           {/* Image */}
           <div className="w-full min-w-0 max-w-full h-[200px] aspect-video">
             <motion.a
@@ -112,7 +112,7 @@ export const ExpandedProjectCard = ({
             {/* Title */}
             <motion.h3
               layoutId={`title-${active.title}-${id}`}
-              className="font-bold font-plagiata text-neutral-700 text-3xl md:text-4xl py-1"
+              className="font-bold font-plagiata text-neutral-700 text-xl md:text-2xl py-1"
             >
               {active.title}
             </motion.h3>
@@ -130,10 +130,10 @@ export const ExpandedProjectCard = ({
                   href={active.demo_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 py-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2"
+                  className="p-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2 hover:bg-green-800"
                 >
                   {"Demo"}
-                  <LinkIcon className="w-5 h-5" />
+                  <LinkIcon className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               )}
               {active.github_link && (
@@ -141,10 +141,10 @@ export const ExpandedProjectCard = ({
                   href={active.github_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 py-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2"
+                  className="px-2 py-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2 hover:bg-green-800"
                 >
                   {"GitHub"}
-                  <GitHubIcon className="w-5 h-5" />
+                  <GitHubIcon className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               )}
             </motion.div>
@@ -156,7 +156,7 @@ export const ExpandedProjectCard = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="text-neutral-600 dark:text-neutral-400 text-base max-h-40 overflow-y-auto flex flex-row flex-wrap gap-1 py-2"
+                className="text-neutral-600 text-sm lg:text-base max-h-40 overflow-y-auto flex flex-row flex-wrap gap-1 py-2"
               >
                 {active.tech_stack.map((tech, index) => {
                   const color = techToColorMap[tech] || "gray";
@@ -173,14 +173,17 @@ export const ExpandedProjectCard = ({
         </div>
 
         {/* Description */}
-        <div className="md:px-2 overflow-y-auto md:h-[60vh]">
+        <div className="md:px-4 overflow-y-auto md:h-[60vh] md:border-l-2 md:border-neutral-400">
           <motion.div
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="text-neutral-600 text-lg md:text-xl lg:text-2xl h-fit flex flex-col px-0 items-start gap-4 dark:text-neutral-400 font-sans"
+            className="text-neutral-600 text-base lg:text-xl h-fit flex flex-col px-0 items-start font-sans"
           >
+            <h1 className="font-bold font-plagiata text-xl md:text-2xl">
+              Description
+            </h1>
             <div className="markdown font-geist-mono">
               <Markdown>{active.description}</Markdown>
             </div>

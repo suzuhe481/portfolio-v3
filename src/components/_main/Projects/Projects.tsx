@@ -64,7 +64,7 @@ export function Projects() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <div id="projects" className="relative min-h-screen">
+    <div id="projects" className="relative py-12 min-h-screen">
       {/* Background SVG Image */}
       <FixedBackground svgPath="/background/layered-steps-background.svg" />
 
