@@ -52,7 +52,16 @@ const SwiperFullscreen = ({
           <SwiperSlide key={index}>
             <div className="relative h-full flex justify-center items-center">
               <div className="swiper-zoom-container">
-                <Image src={image} alt="" className="object-contain" fill />
+                <Image
+                  src={image}
+                  data-loaded="false"
+                  onLoad={(e) => {
+                    e.currentTarget.dataset.loaded = "true";
+                  }}
+                  alt=""
+                  className="object-contain data-[loaded=false]:animate-pulse data-[loaded=false]:bg-gray-400/40"
+                  fill
+                />
               </div>
             </div>
           </SwiperSlide>

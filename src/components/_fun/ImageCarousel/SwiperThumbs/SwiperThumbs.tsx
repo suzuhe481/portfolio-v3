@@ -49,8 +49,12 @@ const SwiperThumbs = ({
             >
               <Image
                 src={image}
+                data-loaded="false"
+                onLoad={(e) => {
+                  e.currentTarget.dataset.loaded = "true";
+                }}
                 alt=""
-                className="cursor-pointer"
+                className="cursor-pointer data-[loaded=false]:animate-pulse data-[loaded=false]:bg-gray-400/40"
                 fill
                 loading="lazy"
               />
