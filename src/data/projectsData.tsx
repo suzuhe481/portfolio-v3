@@ -166,8 +166,8 @@ export const projects = [
   {
     title: "Portfolio v2",
     thumbnail_image: "/images/projects/portfoliov2.jpg",
-    demo_link: "",
-    github_link: "",
+    demo_link: "https://v2.hectorsuazo.com/",
+    github_link: "https://github.com/suzuhe481/portfolio-website-react",
     tech_stack: ["React", "JavaScript", "SASS"],
     description: `
   My first frontend React portfolio. This was the first time I felt like I could style components
