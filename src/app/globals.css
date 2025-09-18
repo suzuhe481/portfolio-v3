@@ -11,7 +11,128 @@
   font-family: "Plagiata", sans-serif;
 }
 
+@font-face {
+  font-family: "Geist-Mono";
+  src: url("/fonts/GeistMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-geist-mono {
+  font-family: "Geist-Mono", monospace;
+}
+
 /* General animation class */
 .animate-all {
   transition: all 0.2s ease-in-out;
+}
+
+/* Shadow classes */
+.typescript-shadow:hover {
+  box-shadow: 0 10px 15px -3px #007accc7;
+}
+
+.react-shadow:hover {
+  box-shadow: 0 10px 15px -3px #61dafbc7;
+}
+
+.html-shadow:hover {
+  box-shadow: 0 10px 15px -3px #e44d26c7;
+}
+
+.javascript-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f0db4fc7;
+}
+
+.tailwind-shadow:hover {
+  box-shadow: 0 10px 15px -3px #38bdf8c7;
+}
+
+.express-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.node-shadow:hover {
+  box-shadow: 0 10px 15px -3px #5fa04ec7;
+}
+
+.mongodb-shadow:hover {
+  box-shadow: 0 10px 15px -3px #4faa41c7;
+}
+
+.postgres-shadow:hover {
+  box-shadow: 0 10px 15px -3px #336791c7;
+}
+
+.linux-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.git-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f34f29c7;
+}
+
+.github-shadow:hover {
+  box-shadow: 0 10px 15px -3px #ffffffc7;
+}
+
+.framer-motion-shadow:hover {
+  box-shadow: 0 10px 15px -3px #f0db4fc7;
+}
+
+.godot-shadow:hover {
+  box-shadow: 0 10px 15px -3px #478cbfc7;
+}
+
+/* End of Shadow classes  */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* This removes css styles from elements with the classname markdown */
+/* Used to display markdown files. */
+.markdown > * {
+  all: revert;
+  margin: 0;
+}
+
+/* Heading styles for markdown */
+.markdown > h2,
+.markdown > h3 {
+  font-family: "Plagiata", sans-serif;
+}
+
+/* A custom thin scroll bar with a black thumb and white track */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #f1f1f1;
+}
+
+@theme {
+  --animate-all: transition-all duration-200 ease-in-out;
+  --animate-fadeInSlideUp: fadeInSlideUp 0.3s;
+  --animate-fadeInSlideDown: fadeInSlideDown 0.3s;
+
+  @keyframes fadeInSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes fadeInSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
 }

@@ -10,11 +10,25 @@
     "host": "next dev --turbopack --hostname 0.0.0.0"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.873.0",
+    "@aws-sdk/s3-request-presigner": "^3.878.0",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@react-three/drei": "^10.7.3",
+    "@react-three/fiber": "^9.3.0",
+    "@supabase/supabase-js": "^2.56.0",
+    "@tabler/icons-react": "^3.34.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.1",
+    "ldrs": "^1.1.7",
+    "motion": "^12.23.9",
     "next": "15.4.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "swiper": "^11.2.10",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.179.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,6 +39,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
