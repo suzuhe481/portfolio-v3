@@ -19,7 +19,7 @@ export default async function fetchBuildImages<T>(
   build: string,
   signal?: AbortSignal
 ): Promise<IAPIResponse<T>> {
-  const url = `/api/build/images?build=${encodeURIComponent(build)}`;
+  const url = `/api/builds/images?build=${encodeURIComponent(build)}`;
 
   const response = await fetch(url, { signal });
   const data = await response.json();
