@@ -63,8 +63,12 @@ const SwiperMain = ({
             <div className="relative w-[90vw] md:w-[70vw] h-[40vh] md:h-[70vh]">
               <Image
                 src={image}
+                data-loaded="false"
+                onLoad={(e) => {
+                  e.currentTarget.dataset.loaded = "true";
+                }}
                 alt=""
-                className="cursor-pointer object-contain"
+                className="cursor-pointer object-contain data-[loaded=false]:animate-pulse data-[loaded=false]:bg-gray-400/40"
                 fill
                 loading="lazy"
                 onClick={() => setFullscreen(true)}
