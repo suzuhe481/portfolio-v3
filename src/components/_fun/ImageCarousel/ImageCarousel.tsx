@@ -29,7 +29,7 @@ const ImageCarousel = () => {
   const [descriptionData, setDescriptionData] = useState<string[]>([]);
 
   // Image and gallery states.
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [imagesReady, setImagesReady] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
