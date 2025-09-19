@@ -178,6 +178,7 @@ const SvgMarker = ({
     clickTimerRef.current = setTimeout(() => {
       if (!isHovered) return;
 
+      // Location Click - update country
       if (marker.type === "city") {
         const location = marker.name;
         updateLocation(location);
@@ -187,6 +188,10 @@ const SvgMarker = ({
         if (country !== undefined) {
           updateCountry(country);
         }
+      }
+      // Country Click - zoom in
+      else {
+        centerWorldOnMarker(camera, controls, markerRef);
       }
     }, DOUBLE_CLICK_DELAY);
   }
