@@ -52,23 +52,25 @@ jobs:
             }
 
 
-            # // Optional: remove existing reviewers (GitHub may auto-reassign CODEOWNERS)
-            # try {
-            #   await github.rest.pulls.removeRequestedReviewers({
-            #     owner,
-            #     repo,
-            #     pull_number: prNumber,
-            #     reviewers: [],
-            #     team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
-            #   });
-            # } catch (error) {
-            #   console.log("No reviewers to remove or error occurred:", error.message);
-            # }
+            // Optional: remove existing reviewers (GitHub may auto-reassign CODEOWNERS)
+            /*
+            try {
+              await github.rest.pulls.removeRequestedReviewers({
+                owner,
+                repo,
+                pull_number: prNumber,
+                reviewers: [],
+                team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
+              });
+            } catch (error) {
+              console.log("No reviewers to remove or error occurred:", error.message);
+            }
 
-            # // Add specific teams as reviewers
-            # await github.rest.pulls.requestReviewers({
-            #   owner,
-            #   repo,
-            #   pull_number: prNumber,
-            #   team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
-            # });
+            // Add specific teams as reviewers
+            await github.rest.pulls.requestReviewers({
+              owner,
+              repo,
+              pull_number: prNumber,
+              team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
+            });
+            */
