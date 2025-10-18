@@ -53,14 +53,13 @@ jobs:
 
 
             // Optional: remove existing reviewers (GitHub may auto-reassign CODEOWNERS)
-            /*
             try {
               await github.rest.pulls.removeRequestedReviewers({
                 owner,
                 repo,
                 pull_number: prNumber,
                 reviewers: [],
-                team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
+                // team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
               });
             } catch (error) {
               console.log("No reviewers to remove or error occurred:", error.message);
@@ -71,6 +70,6 @@ jobs:
               owner,
               repo,
               pull_number: prNumber,
-              team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
+              reviewers: ['suzuhe481'],
+              // team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
             });
-            */
