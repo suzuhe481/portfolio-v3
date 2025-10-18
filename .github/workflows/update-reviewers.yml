@@ -51,7 +51,19 @@ jobs:
               console.error("Error fetching PR details:", error.message);
             }
 
+            // Adds a comment to the pull request
+            try {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body: "This is a comment created by a GitHub Action!"
+              })   
+            } catch (error) {
+              console.error("Error adding comment:", error.message);
+            }
 
+            /*
             // Optional: remove existing reviewers (GitHub may auto-reassign CODEOWNERS)
             try {
               await github.rest.pulls.removeRequestedReviewers({
@@ -73,3 +85,4 @@ jobs:
               reviewers: ['suzuhe481'],
               // team_reviewers: ['peer-code-reviewers', 'senior-code-reviewers'] // Replace with actual team slugs
             });
+            */
