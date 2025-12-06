@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, RefObject, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 import { Button3D } from "./Button3D/Button3D";

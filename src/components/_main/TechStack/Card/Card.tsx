@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, createElement } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { ITechStackDataProps } from "@/types";
 

@@ -5,7 +5,7 @@ import {
   DropdownIcon,
   GlobeIcon,
 } from "@/assets/icons/PageIcons";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants } from "motion/react";
 import { useState, useRef, useEffect, CSSProperties } from "react";
 import { useTravelContext } from "@/hooks/useTravelContext";
 

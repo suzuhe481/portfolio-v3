@@ -12,7 +12,7 @@ import {
 import { useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls as IOrbitControlsProps } from "three-stdlib";
 import { Html } from "@react-three/drei";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "motion/react";
 import { useTravelContext } from "@/hooks/useTravelContext";
 
 import { travelData } from "@/data/travelData";

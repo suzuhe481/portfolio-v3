@@ -1,7 +1,7 @@
 "use client";
 
 import { RefObject, ReactNode, useState, useEffect, useRef } from "react";
-import { motion, Variants, useMotionValue } from "framer-motion";
+import { motion, Variants, useMotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Random floating animation paths.
