@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Markdown from "react-markdown";
 
 import { LinkIcon } from "@/assets/icons/PageIcons";
@@ -50,7 +50,7 @@ export const ExpandedProjectCard = ({
   return (
     <motion.div
       layoutId={`card-container-${active.title}-${id}`}
-      className="fixed inset-0 grid place-items-center z-[100] min-w-0 min-h-0"
+      className="fixed inset-0 grid place-items-center z-100 min-w-0 min-h-0"
     >
       {/* Close Icon in the corner */}
       <motion.button
