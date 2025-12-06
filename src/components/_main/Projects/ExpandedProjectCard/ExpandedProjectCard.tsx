@@ -50,7 +50,7 @@ export const ExpandedProjectCard = ({
   return (
     <motion.div
       layoutId={`card-container-${active.title}-${id}`}
-      className="fixed inset-0 grid place-items-center z-[100] min-w-0 min-h-0"
+      className="fixed inset-0 grid place-items-center z-100 min-w-0 min-h-0"
     >
       {/* Close Icon in the corner */}
       <motion.button
