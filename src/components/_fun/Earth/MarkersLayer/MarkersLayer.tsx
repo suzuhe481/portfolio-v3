@@ -12,7 +12,7 @@ import {
 import { useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls as IOrbitControlsProps } from "three-stdlib";
 import { Html } from "@react-three/drei";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "motion/react";
 import { useTravelContext } from "@/hooks/useTravelContext";
 
 import { travelData } from "@/data/travelData";
@@ -366,7 +366,7 @@ const MarkerTitle = ({ marker }: { marker: IEarthMarker }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.2 }}
-        className={`absolute px-3 py-1 text-md border-b-1 left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap bottom-full mb-2`}
+        className={`absolute px-3 py-1 text-md border-b left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap bottom-full mb-2`}
       >
         {title}
       </motion.div>

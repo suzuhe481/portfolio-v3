@@ -1,7 +1,7 @@
 "use client";
 
 import { RefObject, ReactNode, useState, useEffect, useRef } from "react";
-import { motion, Variants, useMotionValue } from "framer-motion";
+import { motion, Variants, useMotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
 
 // Random floating animation paths.
@@ -218,7 +218,7 @@ const TooltipModal = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: modalPosition === "above" ? 10 : -10 }}
       transition={{ duration: 0.2 }}
-      className={`absolute px-3 py-1 text-md border-b-1 left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap z-10
+      className={`absolute px-3 py-1 text-md border-b left-1/2 -translate-x-1/2 font-bold border-slate-400 text-slate-600 bg-slate-100 rounded-lg shadow-md whitespace-nowrap z-10
             ${modalPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"}
           `}
     >
