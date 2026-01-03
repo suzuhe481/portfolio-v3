@@ -10,6 +10,33 @@
 
 export const projects = [
   {
+    title: "Hackathon - Weather App",
+    thumbnail_image: "/images/projects/hackathonWeatherApp.jpg",
+    demo_link: "https://weathernow.hectorsuazo.com/",
+    github_link: "https://github.com/suzuhe481/weather-app-challenge",
+    tech_stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion",
+      "Open-Meteo API",
+    ],
+    description: `
+  I participated in Frontend Mentor's 30 Day Hackathon to build a weather app. I 
+  joined about halfway through the hackathon and I really enjoyed the challenge. The goal was to 
+  build a weather app using the Open-Meteo API and make it look as close as possible to the given
+  designs. I used React, TypeScript, Tailwind CSS, and Motion to make this project. 
+  \n &nbsp;
+
+  I only had 2 weeks, but I was able to implemen the Open-Meteo API to get the weather data, and
+  closely follow the designs. I only had a few days left before the end, but I was able to add 
+  animations using the Motion library. I implemented animations on the modals, search bar, and 
+  even on the SVG weather icons to make the all unique. This was things like rotating suns, floating 
+  clouds, and falling raindrops. I really had fun working on this project, and I feel it helped
+  improve my design skills.
+  `,
+  },
+  {
     title: "Rubik's Cube Simulator (In progress)",
     thumbnail_image: "/images/projects/rubiks.jpg",
     demo_link: "https://rubikscubesolver.hectorsuazo.com/",
