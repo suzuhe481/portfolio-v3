@@ -5,6 +5,7 @@ import clsx from "clsx";
 import Link from "next/link";
 
 import { MenuButton } from "./MenuButton/MenuButton";
+import { BurgerButton } from "@/components/_main/Navbar/BurgerButton/BurgerButton";
 
 // Link items in navbar
 const menuItems = [
@@ -25,8 +26,17 @@ export const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Randomly decide whether to display the burger menu (50/50 chance)
+  // Initialize to false to match server-side render, then randomize on client
+  const [displayBurgerMenu, setDisplayBurgerMenu] = useState(false);
+
   const menuRef = useRef<HTMLUListElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Set random menu button after component mounts (client-side only)
+  useEffect(() => {
+    setDisplayBurgerMenu(Math.random() < 0.5);
+  }, []);
 
   // Calculates the full height of the mobile navbar items
   useEffect(() => {
@@ -137,11 +147,18 @@ export const Navbar = () => {
                 ))}
               </ul>
 
-              {/* Hamburger menu: Small screens only */}
-              <MenuButton
-                menuOpen={menuOpen}
-                onClick={() => setMenuOpen((prev) => !prev)}
-              />
+              {/* Displays the burger button or menu button */}
+              {displayBurgerMenu ? (
+                <BurgerButton
+                  menuOpen={menuOpen}
+                  onClick={() => setMenuOpen((prev) => !prev)}
+                />
+              ) : (
+                <MenuButton
+                  menuOpen={menuOpen}
+                  onClick={() => setMenuOpen((prev) => !prev)}
+                />
+              )}
             </div>
           </div>
         </nav>
