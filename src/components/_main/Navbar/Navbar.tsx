@@ -14,6 +14,7 @@ const menuItems = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
+  { label: "Fun Page", href: "/fun" },
 ];
 
 export const Navbar = () => {
