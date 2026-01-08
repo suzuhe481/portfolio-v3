@@ -11,6 +11,7 @@ import { BurgerButton } from "@/components/_main/Navbar/BurgerButton/BurgerButto
 const menuItems = [
   { label: "Travel", href: "/fun/travel" },
   { label: "Builds", href: "/fun/builds" },
+  { label: "Main Page", href: "/" },
 ];
 
 export const Navbar = () => {
