@@ -14,7 +14,7 @@ export const CardContainer = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 px-2 mt-12",
+        "grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 md:gap-5 lg:gap-6 max-w-6xl",
         className
       )}
     >

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback, useId } from "react";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { AnimatedCardContainer } from "./AnimatedCardContainer/AnimatedCardContainer";
 import { ProjectCard } from "./ProjectCard/ProjectCard";
-import { FixedBackground } from "../FixedBackground/FixedBackground";
 import { projects } from "../../../data/projectsData";
+
+import { IProjectCardProps } from "@/types";
 
 export function Projects() {
   // Stores the currently expanded card
@@ -15,11 +16,16 @@ export function Projects() {
 
   // Stores the groups of cards to be separated into pages
   const [cardGroups, setCardGroups] = useState<(typeof projects)[number][][]>(
-    () => chunkArray(projects, 8)
+    () => chunkArray(projects, 8),
   );
 
+  const expandedCardRef = useRef<HTMLDivElement>(null);
   const id = useId();
-  const ref = useRef<HTMLDivElement>(null);
+
+  // Handler to set active card
+  const handleSetActive = useCallback((card: IProjectCardProps | null) => {
+    setActive(card);
+  }, []);
 
   // Prevents scrolling when project card is expanded.
   // Allows closing the card by pressing escape.
@@ -61,23 +67,24 @@ export function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useOutsideClick(ref, () => setActive(null));
+  useOutsideClick(expandedCardRef, () => setActive(null));
 
   return (
-    <div id="projects" className="relative py-12 min-h-screen">
-      {/* Background SVG Image */}
-      <FixedBackground svgPath="/background/layered-steps-background.svg" />
+    <section id="projects" className="relative py-16 md:py-24 bg-[#242424]">
+      {/* Section header */}
+      <div className="text-center mb-4 md:mb-8 px-4">
+        <h2 className="flex flex-col items-center text-white text-6xl underline font-plagiata">
+          Projects
+        </h2>
+        <p className="mt-4 text-slate-400 font-geist-mono text-sm md:text-base max-w-md mx-auto">
+          Scroll left or right to see more
+        </p>
+      </div>
 
-      <h1 className="flex flex-col items-center text-white text-6xl pt-12 underline font-plagiata">
-        Projects
-      </h1>
-      <p className="flex flex-col items-center text-white text-mde font-plagiata">
-        Scroll left/right to see more
-      </p>
       <AnimatedCardContainer
         active={active}
         setActive={setActive}
-        ref={ref}
+        expandedCardRef={expandedCardRef}
         id={id}
       >
         {/* Card Group Page */}
@@ -88,11 +95,14 @@ export function Projects() {
           >
             <ul className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 lg:grid-cols-4 md:grid-rows-2 justify-items-center gap-8 w-full">
               {/* Project Cards in a single page */}
-              {group.map((card, index) => (
+              {group.map((card) => (
                 <ProjectCard
-                  key={index}
+                  key={card.title}
                   card={card}
-                  setActive={setActive}
+                  setActive={handleSetActive}
+                  isActive={
+                    typeof active === "object" && active?.title === card.title
+                  }
                   id={id}
                 />
               ))}
@@ -100,7 +110,7 @@ export function Projects() {
           </li>
         ))}
       </AnimatedCardContainer>
-    </div>
+    </section>
   );
 }
 

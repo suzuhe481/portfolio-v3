@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ===================================
+   FONTS
+   =================================== */
 @font-face {
   font-family: "Plagiata";
   src: url("/fonts/Plagiata.otf");
@@ -22,97 +25,184 @@
   font-family: "Geist-Mono", monospace;
 }
 
-/* General animation class */
-.animate-all {
-  transition: all 0.2s ease-in-out;
-}
-
-/* Shadow classes */
-.typescript-shadow:hover {
-  box-shadow: 0 10px 15px -3px #007accc7;
-}
-
-.react-shadow:hover {
-  box-shadow: 0 10px 15px -3px #61dafbc7;
-}
-
-.html-shadow:hover {
-  box-shadow: 0 10px 15px -3px #e44d26c7;
-}
-
-.javascript-shadow:hover {
-  box-shadow: 0 10px 15px -3px #f0db4fc7;
-}
-
-.tailwind-shadow:hover {
-  box-shadow: 0 10px 15px -3px #38bdf8c7;
-}
-
-.express-shadow:hover {
-  box-shadow: 0 10px 15px -3px #ffffffc7;
-}
-
-.node-shadow:hover {
-  box-shadow: 0 10px 15px -3px #5fa04ec7;
-}
-
-.mongodb-shadow:hover {
-  box-shadow: 0 10px 15px -3px #4faa41c7;
-}
-
-.postgres-shadow:hover {
-  box-shadow: 0 10px 15px -3px #336791c7;
-}
-
-.linux-shadow:hover {
-  box-shadow: 0 10px 15px -3px #ffffffc7;
-}
-
-.git-shadow:hover {
-  box-shadow: 0 10px 15px -3px #f34f29c7;
-}
-
-.github-shadow:hover {
-  box-shadow: 0 10px 15px -3px #ffffffc7;
-}
-
-.framer-motion-shadow:hover {
-  box-shadow: 0 10px 15px -3px #f0db4fc7;
-}
-
-.godot-shadow:hover {
-  box-shadow: 0 10px 15px -3px #478cbfc7;
-}
-
-/* End of Shadow classes  */
-
+/* ===================================
+   BASE STYLES
+   =================================== */
 html {
   scroll-behavior: smooth;
 }
 
-/* This removes css styles from elements with the classname markdown */
-/* Used to display markdown files. */
+body {
+  background: var(--color-bg-primary);
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(99, 102, 241, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 100% 100%,
+      rgba(139, 92, 246, 0.1),
+      transparent
+    );
+  background-attachment: fixed;
+}
+
+/* ===================================
+   GENERAL UTILITIES
+   =================================== */
+.animate-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ===================================
+   TECH STACK SHADOW CLASSES
+   =================================== */
+.typescript-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(0, 122, 204, 0.4),
+    0 0 40px rgba(0, 122, 204, 0.2),
+    inset 0 0 20px rgba(0, 122, 204, 0.1);
+}
+
+.react-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(97, 218, 251, 0.4),
+    0 0 40px rgba(97, 218, 251, 0.2),
+    inset 0 0 20px rgba(97, 218, 251, 0.1);
+}
+
+.html-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(228, 77, 38, 0.4),
+    0 0 40px rgba(228, 77, 38, 0.2),
+    inset 0 0 20px rgba(228, 77, 38, 0.1);
+}
+
+.javascript-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(240, 219, 79, 0.4),
+    0 0 40px rgba(240, 219, 79, 0.2),
+    inset 0 0 20px rgba(240, 219, 79, 0.1);
+}
+
+.tailwind-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.4),
+    0 0 40px rgba(56, 189, 248, 0.2),
+    inset 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.express-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.node-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(95, 160, 78, 0.4),
+    0 0 40px rgba(95, 160, 78, 0.2),
+    inset 0 0 20px rgba(95, 160, 78, 0.1);
+}
+
+.mongodb-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(79, 170, 65, 0.4),
+    0 0 40px rgba(79, 170, 65, 0.2),
+    inset 0 0 20px rgba(79, 170, 65, 0.1);
+}
+
+.postgres-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(51, 103, 145, 0.4),
+    0 0 40px rgba(51, 103, 145, 0.2),
+    inset 0 0 20px rgba(51, 103, 145, 0.1);
+}
+
+.linux-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.git-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(243, 79, 41, 0.4),
+    0 0 40px rgba(243, 79, 41, 0.2),
+    inset 0 0 20px rgba(243, 79, 41, 0.1);
+}
+
+.github-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.framer-motion-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(240, 219, 79, 0.4),
+    0 0 40px rgba(240, 219, 79, 0.2),
+    inset 0 0 20px rgba(240, 219, 79, 0.1);
+}
+
+.godot-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(71, 140, 191, 0.4),
+    0 0 40px rgba(71, 140, 191, 0.2),
+    inset 0 0 20px rgba(71, 140, 191, 0.1);
+}
+
+/* ===================================
+   MARKDOWN STYLES
+   =================================== */
 .markdown > * {
   all: revert;
   margin: 0;
 }
 
-/* Heading styles for markdown */
 .markdown > h2,
 .markdown > h3 {
   font-family: "Plagiata", sans-serif;
 }
 
-/* A custom thin scroll bar with a black thumb and white track */
+/* ===================================
+   SCROLLBAR STYLES
+   =================================== */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #000000 #f1f1f1;
+  scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* ===================================
+   THEME KEYFRAMES
+   =================================== */
 @theme {
   --animate-all: transition-all duration-200 ease-in-out;
   --animate-fadeInSlideUp: fadeInSlideUp 0.3s;
   --animate-fadeInSlideDown: fadeInSlideDown 0.3s;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
 
   @keyframes fadeInSlideUp {
     0% {
@@ -133,6 +223,26 @@ html {
     100% {
       opacity: 1;
       transform: translateY(0%);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
     }
   }
 }

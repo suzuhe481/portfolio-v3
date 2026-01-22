@@ -1,18 +1,18 @@
-import { FixedBackground } from "../FixedBackground/FixedBackground";
 import { Timeline } from "./Timeline/Timeline";
 
 import { experience } from "@/data/experienceData";
 
 export const Experience = () => {
   return (
-    <div id="experience" className="relative py-12 min-h-screen">
-      {/* Background SVG Image */}
-      <FixedBackground svgPath="/background/layered-waves.svg" />
+    <section id="experience" className="relative py-16 md:py-24 bg-[#242424]">
+      {/* Section header */}
+      <div className="text-center mb-4 md:mb-8 px-4">
+        <h2 className="flex flex-col items-center text-white text-6xl underline font-plagiata">
+          Experience
+        </h2>
+      </div>
 
-      <h1 className="flex flex-col items-center text-white text-6xl pt-12 underline font-plagiata">
-        Experience
-      </h1>
       <Timeline data={experience} />
-    </div>
+    </section>
   );
 };
