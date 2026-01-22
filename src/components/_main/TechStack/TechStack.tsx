@@ -19,7 +19,6 @@ import {
 } from "@/assets/icons/TechStackIcons";
 import { Card } from "./Card/Card";
 import { CardContainer } from "./CardContainer/CardContainer";
-import { FixedBackground } from "../FixedBackground/FixedBackground";
 
 import {
   DndContext,
@@ -120,7 +119,7 @@ export const TechStack = () => {
     useSensor(TouchSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const dndId = useId(); // Fixes hydration issues when assigned to DndContext
@@ -166,17 +165,19 @@ export const TechStack = () => {
   }, []);
 
   return (
-    <div id="tech" className="relative py-12 min-h-screen">
-      {/* Background SVG Image */}
-      <FixedBackground svgPath="/background/waves-background.svg" />
+    <section id="tech" className="relative py-16 md:py-24 bg-[#242424]">
+      {/* Section header */}
+      <div className="text-center mb-4 md:mb-8 px-4">
+        <h2 className="flex flex-col items-center text-white text-6xl underline font-plagiata">
+          Tech Stack
+        </h2>
+        <p className="mt-4 text-slate-400 font-geist-mono text-sm md:text-base max-w-md mx-auto">
+          Hover, tap, or drag the cards to interact
+        </p>
+      </div>
 
-      <h1 className="flex flex-col items-center text-white text-6xl pt-12 underline font-plagiata">
-        Tech Stack
-      </h1>
-      <p className="flex flex-col items-center text-white text-mde font-plagiata">
-        Hover/Tap/Drag The Cards!
-      </p>
-      <div className="flex justify-center items-center">
+      {/* Cards grid */}
+      <div className="flex justify-center items-center px-4 md:px-8">
         <CardContainer className="font-plagiata font-bold">
           <DndContext
             id={dndId}
@@ -189,7 +190,7 @@ export const TechStack = () => {
               items={techStack.map((tech) => tech.name)}
               strategy={rectSortingStrategy}
             >
-              {/* Tech Icons*/}
+              {/* Tech Icons */}
               {techStack.map((tech) => (
                 <Card key={tech.name} name={tech.name} icon={tech.icon} />
               ))}
@@ -209,9 +210,6 @@ export const TechStack = () => {
           </DndContext>
         </CardContainer>
       </div>
-
-      {/* Bottom buffer. Padding is already set in main container to prevent rendering artifact */}
-      <div className="pb-24" />
-    </div>
+    </section>
   );
 };
