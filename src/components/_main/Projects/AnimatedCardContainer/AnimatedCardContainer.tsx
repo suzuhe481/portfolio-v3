@@ -1,8 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useRef, useEffect } from "react";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { ExpandedProjectCard } from "../ExpandedProjectCard/ExpandedProjectCard";
 
 import { IProjectCardProps } from "@/types";
@@ -11,7 +11,7 @@ export const AnimatedCardContainer = ({
   children,
   active,
   setActive,
-  ref,
+  expandedCardRef,
   id,
 }: {
   children: ReactNode;
@@ -19,28 +19,61 @@ export const AnimatedCardContainer = ({
   setActive: React.Dispatch<
     React.SetStateAction<boolean | IProjectCardProps | null>
   >;
-  ref: React.RefObject<HTMLDivElement | null>;
+  expandedCardRef: React.RefObject<HTMLDivElement | null>;
   id: string;
 }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track if card is active
+  const isExpanded = active && typeof active === "object";
+
+  // Disable horizontal scrolling on the scroll container when a card is expanded
+  // This keeps the scrollbar visible but prevents user from scrolling
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    if (isExpanded) {
+      // Prevent scrolling by handling wheel and touch events
+      const preventScroll = (e: Event) => {
+        e.preventDefault();
+      };
+
+      scrollContainer.addEventListener("wheel", preventScroll, {
+        passive: false,
+      });
+      scrollContainer.addEventListener("touchmove", preventScroll, {
+        passive: false,
+      });
+
+      return () => {
+        scrollContainer.removeEventListener("wheel", preventScroll);
+        scrollContainer.removeEventListener("touchmove", preventScroll);
+      };
+    }
+  }, [isExpanded]);
+
   return (
-    <>
+    <LayoutGroup>
       {/* Darkened Background when project card is expanded */}
       <AnimatePresence>
-        {active && typeof active === "object" && (
+        {isExpanded && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm h-full w-full z-10"
           />
         )}
       </AnimatePresence>
 
       {/* Expanded Project Card */}
-      <AnimatePresence>
-        {active && typeof active === "object" ? (
+      {/* mode="popLayout" handles shared layout animation during exit */}
+      <AnimatePresence mode="popLayout">
+        {isExpanded ? (
           <ExpandedProjectCard
-            ref={ref}
+            expandedCardRef={expandedCardRef}
             active={active}
             setActive={setActive}
             id={id}
@@ -48,10 +81,13 @@ export const AnimatedCardContainer = ({
         ) : null}
       </AnimatePresence>
 
-      {/* Project Card Container */}
-      <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth w-full custom-scrollbar py-8">
-        <ul className="flex gap-4">{children}</ul>
+      {/* Project Card Container - overflow always auto to maintain scroll position and scrollbar */}
+      <div
+        ref={scrollContainerRef}
+        className="overflow-x-auto snap-x snap-mandatory scroll-smooth w-full custom-scrollbar pb-6 px-2"
+      >
+        <ul className="flex gap-6 md:gap-8">{children}</ul>
       </div>
-    </>
+    </LayoutGroup>
   );
 };

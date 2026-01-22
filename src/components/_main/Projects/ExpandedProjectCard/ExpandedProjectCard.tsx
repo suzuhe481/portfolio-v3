@@ -30,17 +30,19 @@ const techToColorMap: Record<string, keyof typeof badgeColorVariants> = {
 };
 
 /** Expanded Project Card
- * Containers the expanded project card when clicked by user.
+ * Contains the expanded project card when clicked by user.
  * Project card contains close icon in corner of screen and
  * displays project details.
+ * Uses shared layoutId with ProjectCard for smooth expand/collapse animation.
+ * The card container, image, and title each share a layoutId with their ProjectCard counterparts.
  */
 export const ExpandedProjectCard = ({
-  ref,
+  expandedCardRef,
   active,
   setActive,
   id,
 }: {
-  ref: React.RefObject<HTMLDivElement | null>;
+  expandedCardRef: React.RefObject<HTMLDivElement | null>;
   active: IProjectCardProps;
   setActive: React.Dispatch<
     React.SetStateAction<boolean | IProjectCardProps | null>
@@ -49,91 +51,107 @@ export const ExpandedProjectCard = ({
 }) => {
   return (
     <motion.div
-      layoutId={`card-container-${active.title}-${id}`}
-      className="fixed inset-0 grid place-items-center z-100 min-w-0 min-h-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 grid place-items-center z-1000 p-4"
     >
       {/* Close Icon in the corner */}
       <motion.button
-        key={`button-${active.title}-${id}`}
-        layout
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        exit={{
-          opacity: 0,
-          transition: {
-            duration: 0.05,
-          },
-        }}
-        className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.2 } }}
+        exit={{ opacity: 0, transition: { duration: 0.1 } }}
+        className="flex absolute top-4 right-4 lg:hidden items-center justify-center bg-slate-800 hover:bg-slate-700 rounded-full h-8 w-8 border border-slate-600 transition-colors cursor-pointer z-10"
         onClick={() => setActive(null)}
       >
         <CloseIcon />
       </motion.button>
 
-      {/* Expanded Project Card */}
+      {/* Expanded Project Card - shares layoutId with ProjectCard for morphing animation */}
+      {/* exit prop keeps element in DOM during AnimatePresence exit for layout animation */}
       <motion.div
-        ref={ref}
-        className="w-[80vw] md:w-[80vw] min-h-[70vh] max-h-[80vh] md:h-[70vh] animate-all flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden p-4"
+        ref={expandedCardRef}
+        layoutId={`card-${active.title}-${id}`}
+        layout
+        exit={{ opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        className="w-[92vw] md:w-[85vw] lg:w-[80vw] max-w-5xl min-h-[70vh] max-h-[85vh] md:max-h-[80vh] flex flex-col md:flex-row bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-black/50"
       >
-        <div className="md:pr-4 flex flex-col">
-          {/* Image */}
-          <div className="w-full min-w-0 max-w-full h-[200px] aspect-video">
-            <motion.a
-              href={active.demo_link || "#"}
-              target="_blank"
-              className="group relative block w-full h-full border-2 border-black rounded-tr-lg rounded-tl-lg"
-              rel="noopener noreferrer"
+        <div className="md:w-2/5 p-4 md:p-6 flex flex-col bg-white">
+          {/* Image - shares layoutId with ProjectCard image */}
+          <div className="w-full min-w-0 max-w-full h-[180px] md:h-[220px]">
+            <motion.div
               layoutId={`image-${active.title}-${id}`}
-              onClick={(e) => {
-                // Prevents navigation if no demo_link
-                if (!active.demo_link) {
-                  e.preventDefault();
-                }
+              layout
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
               }}
+              className="relative w-full h-full rounded-xl overflow-hidden"
             >
-              {active.demo_link && (
-                <LinkIcon className="absolute inset-0 m-auto h-10 w-10 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none z-10" />
-              )}
-              <Image
-                width={1280}
-                height={720}
-                src={active.thumbnail_image}
-                alt={active.title}
-                objectFit="center center"
-                className="block w-full h-full max-w-full max-h-full rounded-tr-lg rounded-tl-lg object-cover object-top hover:cursor-pointer hover:brightness-75"
-              />
-            </motion.a>
+              <a
+                href={active.demo_link || "#"}
+                target="_blank"
+                className="group block w-full h-full"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  // Prevents navigation if no demo_link
+                  if (!active.demo_link) {
+                    e.preventDefault();
+                  }
+                }}
+              >
+                {active.demo_link && (
+                  <LinkIcon className="absolute inset-0 m-auto h-10 w-10 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none z-10 drop-shadow-lg" />
+                )}
+                <Image
+                  width={1280}
+                  height={720}
+                  src={active.thumbnail_image}
+                  alt={active.title}
+                  objectFit="center center"
+                  className="block w-full h-full max-w-full max-h-full object-cover object-top hover:cursor-pointer hover:brightness-75 transition-all duration-300"
+                />
+              </a>
+            </motion.div>
           </div>
-          <div className="flex flex-col justify-between items-start">
-            {/* Title */}
+
+          <div className="flex flex-col justify-between items-start mt-4 flex-1">
+            {/* Title - shares layoutId with ProjectCard title */}
             <motion.h3
               layoutId={`title-${active.title}-${id}`}
-              className="font-bold font-plagiata text-neutral-700 text-xl md:text-2xl py-1"
+              layout
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+              className="font-bold font-plagiata text-slate-800 text-xl md:text-2xl"
             >
               {active.title}
             </motion.h3>
 
             {/* Buttons */}
             <motion.div
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex flex-row gap-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              className="flex flex-row gap-3 mt-4"
             >
               {active.demo_link && (
                 <a
                   href={active.demo_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2 hover:bg-green-800"
+                  className="px-4 py-2 text-sm md:text-base rounded-lg font-medium bg-indigo-600 text-white flex flex-row justify-center items-center gap-2 hover:bg-indigo-700 transition-colors"
                 >
                   {"Demo"}
-                  <LinkIcon className="w-4 h-4 md:w-5 md:h-5" />
+                  <LinkIcon className="w-4 h-4" />
                 </a>
               )}
               {active.github_link && (
@@ -141,50 +159,46 @@ export const ExpandedProjectCard = ({
                   href={active.github_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 py-2 text-xs md:text-base rounded-full font-bold bg-green-500 text-white flex flex-row justify-center items-center gap-2 hover:bg-green-800"
+                  className="px-4 py-2 text-sm md:text-base rounded-lg font-medium bg-slate-800 text-white flex flex-row justify-center items-center gap-2 hover:bg-slate-900 transition-colors"
                 >
                   {"GitHub"}
-                  <GitHubIcon className="w-4 h-4 md:w-5 md:h-5" />
+                  <GitHubIcon className="w-4 h-4" />
                 </a>
               )}
             </motion.div>
 
             {/* Tech Stack Badges */}
-            <div className="flex flex-col gap-2">
-              <motion.p
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-neutral-600 text-sm lg:text-base max-h-40 overflow-y-auto flex flex-row flex-wrap gap-1 py-2"
-              >
-                {active.tech_stack.map((tech, index) => {
-                  const color = techToColorMap[tech] || "gray";
-                  const className = badgeColorVariants[color];
-                  return (
-                    <span key={index} className={className}>
-                      {tech}
-                    </span>
-                  );
-                })}
-              </motion.p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.25 } }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              className="flex flex-row flex-wrap gap-1.5 mt-4"
+            >
+              {active.tech_stack.map((tech, index) => {
+                const color = techToColorMap[tech] || "gray";
+                const className = badgeColorVariants[color];
+                return (
+                  <span key={index} className={className + " text-xs"}>
+                    {tech}
+                  </span>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
 
         {/* Description */}
-        <div className="md:px-4 overflow-y-auto md:h-[60vh] md:border-l-2 md:border-neutral-400">
+        <div className="md:w-3/5 p-4 md:p-6 overflow-y-auto bg-slate-50 md:border-l border-slate-200">
           <motion.div
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="text-neutral-600 text-base lg:text-xl h-fit flex flex-col px-0 items-start font-sans"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            className="text-slate-600 text-base h-fit flex flex-col"
           >
-            <h1 className="font-bold font-plagiata text-xl md:text-2xl">
+            <h4 className="font-bold font-plagiata text-slate-700 text-lg md:text-xl mb-3">
               Description
-            </h1>
-            <div className="markdown font-geist-mono">
+            </h4>
+            <div className="markdown font-geist-mono text-sm md:text-base leading-relaxed">
               <Markdown>{active.description}</Markdown>
             </div>
           </motion.div>
@@ -219,7 +233,7 @@ const CloseIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="h-4 w-4 text-slate-300"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
