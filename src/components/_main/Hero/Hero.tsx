@@ -14,49 +14,61 @@ export function Hero() {
       "Web Developer",
       "Hobbyist Game Dev",
     ],
-    interval: 2500, // ms
-    animationDuration: 700, // ms
+    interval: 2500,
+    animationDuration: 700,
     className:
-      "bg-[linear-gradient(to_bottom,#1f2937,#111827)] flex justify-center items-center",
+      "bg-gradient-to-b from-[#1a1a2e] to-[#16162a] flex justify-center items-center border border-[rgba(99,102,241,0.2)]",
     textClassName:
-      "py-4 font-plagiata italic px-2 text-white drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_4px_#fff] drop-shadow-[0_0_6px_#0ff]",
+      "py-4 font-plagiata italic px-3 text-white drop-shadow-[0_0_8px_rgba(129,140,248,0.6)] drop-shadow-[0_0_20px_rgba(99,102,241,0.4)]",
   };
 
   return (
-    <div
+    <section
       id="home"
-      className="relative mx-auto flex flex-col items-center justify-center bg-[#242424] min-h-[calc(100vh-8rem)] md:min-h-screen scroll-mt-20"
+      className="relative flex flex-col items-center justify-center bg-[#242424] min-h-[calc(100vh-4rem)] md:min-h-screen scroll-mt-20 overflow-hidden"
     >
-      <div className="px-4 py-10 md:py-10">
-        <h1 className="relative z-10 mx-auto max-w-4xl py-2 text-center font-plagiata font-bold text-slate-200 text-6xl md:text-8xl dark:text-slate-300 animate-all">
-          {"Hi! My name is Hector Suazo".split(" ").map((word, index) => (
-            <motion.div
+      {/* Background gradient accent */}
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-indigo-500/5 to-indigo-500/10 pointer-events-none" />
+
+      <div className="relative z-10 px-6 md:px-8 py-16 md:py-20 max-w-5xl mx-auto">
+        {/* Main heading */}
+        <h1 className="relative mx-auto text-center font-plagiata font-bold text-[clamp(2.5rem,8vw,5.5rem)] leading-[1.1] tracking-tight">
+          {"Hi! My name is".split(" ").map((word, index) => (
+            <motion.span
               key={index}
-              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+              initial={{ opacity: 0, filter: "blur(4px)", y: 20 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{
-                duration: 0.3,
-                delay: index * 0.1,
-                ease: "easeInOut",
+                duration: 0.4,
+                delay: index * 0.08,
+                ease: "easeOut",
               }}
-              className="mr-2 inline-block"
+              className="mr-[0.25em] inline-block text-slate-300"
             >
               {word}
-            </motion.div>
+            </motion.span>
           ))}
+          <br />
+          <motion.span
+            initial={{ opacity: 0, filter: "blur(4px)", y: 20 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.35,
+              ease: "easeOut",
+            }}
+            className="inline-block bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Hector Suazo
+          </motion.span>
         </h1>
+
+        {/* Text flip container */}
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 0.8,
-          }}
-          className="relative z-10 animate-all mx-auto max-w-[90vw] py-4 my-4 text-center text-lg font-normal text-neutral-200 dark:text-neutral-400 flex justify-center items-center h-[100px] md:h-[190px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="relative mt-8 md:mt-12 flex justify-center items-center h-[90px] md:h-[160px]"
         >
           <ContainerTextFlip
             words={ContainerTextFlipData.words}
@@ -66,33 +78,28 @@ export function Hero() {
             className={ContainerTextFlipData.className}
           />
         </motion.div>
+
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1,
-          }}
-          className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="relative mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
             href="#projects"
-            className="text-center w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-400 hover:text-white dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900 cursor-pointer"
+            className="group relative text-center w-64 px-8 py-3.5 font-geist-mono font-medium text-sm tracking-wide rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30"
           >
-            Explore My Projects
+            <span className="relative z-10">Explore My Projects</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
           <Link
             href="/fun"
-            className="text-center w-60 transform rounded-lg bg-sky-700 px-6 py-2 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 cursor-pointer"
+            className="group text-center w-64 px-8 py-3.5 font-geist-mono font-medium text-sm tracking-wide rounded-xl border border-slate-600 text-white transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:bg-indigo-500/10 cursor-pointer"
           >
             Explore My Hobbies
           </Link>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

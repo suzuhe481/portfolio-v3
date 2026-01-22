@@ -36,8 +36,8 @@ export const Card = ({ name, icon, overlay }: ICardProps) => {
 
   // Icon is memorized to prevent re-rendering and delay when dragging cards with dndkit.
   const MemoizedIcon = useMemo(
-    () => <div className="w-12 md:w-24">{createElement(Icon)}</div>,
-    [Icon]
+    () => <div className="w-12 md:w-16">{createElement(Icon)}</div>,
+    [Icon],
   );
 
   const shadowClass = shadowClasses[name as keyof typeof shadowClasses];
@@ -57,13 +57,13 @@ export const Card = ({ name, icon, overlay }: ICardProps) => {
   };
 
   // Base card styles + overlay style when dragged
-  // isDragging affects the style of the copied underneath card, not the actual dragged card..
+  // isDragging affects the style of the copied underneath card, not the actual dragged card.
   const cardStyles = `${
-    isDragging ? "opacity-70" : ""
-  } bg-gray-800/50 backdrop-blur-sm border border-gray-700 cursor-grab rounded-xl p-4 flex flex-col items-center justify-center shadow-lg ${shadowClass} touch-none group`;
+    isDragging ? "opacity-50" : ""
+  } bg-[rgba(26,26,36,0.8)] backdrop-blur-md border border-[rgba(148,163,184,0.1)] hover:border-[rgba(148,163,184,0.25)] cursor-grab rounded-2xl p-5 md:p-6 flex flex-col items-center justify-center ${shadowClass} touch-none group`;
 
   // Dragged card
-  const draggedCardStyles = `rotate-6 animate-pulse cursor-grabbing ${cardStyles}`;
+  const draggedCardStyles = `rotate-3 scale-105 cursor-grabbing shadow-2xl shadow-indigo-500/20 ${cardStyles}`;
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
@@ -86,7 +86,7 @@ export const Card = ({ name, icon, overlay }: ICardProps) => {
             {/* <MemoizedIcon className="w-12 md:w-24" /> */}
             {MemoizedIcon}
           </div>
-          <span className="text-gray-200 font-medium text-center group-hover:text-cyan-400 transition-colors">
+          <span className="text-slate-300 font-medium text-center text-sm md:text-base group-hover:text-indigo-300 transition-colors">
             {name}
           </span>
         </motion.div>

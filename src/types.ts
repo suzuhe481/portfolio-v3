@@ -1,4 +1,4 @@
-import { FC, Dispatch, SetStateAction } from "react";
+import { FC } from "react";
 
 interface FCProps {
   className?: string;
@@ -21,8 +21,9 @@ export interface IProjectCardProps {
 
 export interface IProjectCardsDataProps {
   card: IProjectCardProps;
-  setActive: Dispatch<SetStateAction<boolean | IProjectCardProps | null>>;
-  id: string;
+  setActive: (card: IProjectCardProps | null) => void;
+  isActive?: boolean;
+  id?: string;
 }
 
 export interface IExperienceDataProps {
