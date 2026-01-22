@@ -101,13 +101,13 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 shadow text-white transition-trasform duration-300 ${
+      className={`sticky top-0 w-full z-50 shadow text-white transition-transform duration-200 ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="relative">
         {/* Background behind the translucent navbar */}
-        <div className="absolute inset-0 bg-[#000000bd] z-[-1]" />
+        <div className="absolute inset-0 bg-[#0a0a0fbd] z-[-1]" />
 
         <nav className="w-full">
           <div className="w-full px-4 sm:px-6 lg:px-8 animate-all">
@@ -126,7 +126,7 @@ export const Navbar = () => {
                   "md:transition-none md:overflow-visible md:h-auto",
                   "flex-col w-full bg-[#333] absolute left-0 top-full z-40",
                   "md:relative md:flex md:flex-row md:items-center md:space-x-2 md:bg-transparent md:w-auto",
-                  menuOpen || showMenu ? "block" : "hidden"
+                  menuOpen || showMenu ? "block" : "hidden",
                 )}
                 style={{
                   height: menuOpen ? `${menuHeight}px` : 0,
