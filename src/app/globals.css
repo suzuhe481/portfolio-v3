@@ -144,9 +144,9 @@ body {
 
 .motion-shadow:hover {
   box-shadow:
-    0 0 20px rgba(240, 219, 79, 0.4),
-    0 0 40px rgba(240, 219, 79, 0.2),
-    inset 0 0 20px rgba(240, 219, 79, 0.1);
+    0 0 20px rgba(255, 243, 18, 0.4),
+    0 0 40px rgba(255, 243, 18, 0.2),
+    inset 0 0 20px rgba(255, 243, 18, 0.1);
 }
 
 .godot-shadow:hover {
