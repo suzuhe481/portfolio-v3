@@ -22,7 +22,7 @@ const shadowClasses = {
   Linux: "linux-shadow",
   Git: "git-shadow",
   GitHub: "github-shadow",
-  ["Framer Motion"]: "framer-motion-shadow",
+  ["Motion"]: "motion-shadow",
   Godot: "godot-shadow",
 };
 
