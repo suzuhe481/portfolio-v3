@@ -22,7 +22,7 @@ const shadowClasses = {
   Linux: "linux-shadow",
   Git: "git-shadow",
   GitHub: "github-shadow",
-  ["Framer Motion"]: "framer-motion-shadow",
+  ["Motion"]: "motion-shadow",
   Godot: "godot-shadow",
 };
 
@@ -36,7 +36,11 @@ export const Card = ({ name, icon, overlay }: ICardProps) => {
 
   // Icon is memorized to prevent re-rendering and delay when dragging cards with dndkit.
   const MemoizedIcon = useMemo(
-    () => <div className="w-12 md:w-16">{createElement(Icon)}</div>,
+    () => (
+      <div className="w-12 h-12 md:w-16 md:h-16 flex justify-center">
+        {createElement(Icon)}
+      </div>
+    ),
     [Icon],
   );
 

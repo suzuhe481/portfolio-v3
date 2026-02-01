@@ -17,7 +17,7 @@ I used a lot of technologies in building this. Some familiar, and some I've neve
 - **Styling**: Tailwind CSS v4
 - **Image Storage**: AWS S3
 - **Animation Component Library**: Aceternity UI
-- **Animation Library**: Framer Motion
+- **Animation Library**: Motion
 - **3D Animation Library**: Three.js
 - **Drag and Drop Toolkit**: Dnd kit
 - **Loading Spinners**: LDRS
