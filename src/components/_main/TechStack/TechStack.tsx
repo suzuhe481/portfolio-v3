@@ -14,7 +14,7 @@ import {
   LinuxIcon,
   GitIcon,
   GitHubIcon,
-  FramerMotionIcon,
+  MotionIcon,
   GodotIcon,
 } from "@/assets/icons/TechStackIcons";
 import { Card } from "./Card/Card";
@@ -92,8 +92,8 @@ const techStackData: ITechStackDataProps[] = [
     icon: GitHubIcon,
   },
   {
-    name: "Framer Motion",
-    icon: FramerMotionIcon,
+    name: "Motion",
+    icon: MotionIcon,
   },
   {
     name: "Godot",
