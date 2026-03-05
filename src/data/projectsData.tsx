@@ -10,6 +10,50 @@
 
 export const projects = [
   {
+    title: "The Game List",
+    thumbnail_image: "/images/projects/theGameList.jpg",
+    demo_link: "https://www.thegamelist.app/",
+    github_link: "",
+    tech_stack: ["Next.js", "React", "Tailwind CSS", "Supabase", "IGDB API"],
+    description: `
+  The Game List is a fullstack Next.js application that allows users to search for and add games to their lists with a Kanban board style interface.
+  \n &nbsp;
+  
+  Powered by the IGDB API, users can search for games by title or IGDB ID through a fluid, interactive, and responsive UI.
+  `,
+  },
+  {
+    title: "CLI Agentic Travel App",
+    thumbnail_image: "/images/projects/travelApp.jpg",
+    demo_link:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7418059981184274432/",
+    github_link: "",
+    tech_stack: ["LangChain", "LangGraph", "Express", "OpenAI API"],
+    description: `
+  My first application where I  built an AI agent that fetches real flight data based on
+  the user's prompt.
+  \n &nbsp;
+
+  Built with LangGraph, Express, OpenAI API, and Amadeus Travel API, this CLI app is able to understand 
+  natural language queries and return real-time flight data with the Amadeus API. Memory is also implemented so 
+  that the agent can reference past conversations. This project was eventually implemented into a larger scale
+  web application.
+  `,
+  },
+  {
+    title: "Game Gestures",
+    thumbnail_image: "/images/projects/gameGestures.jpg",
+    demo_link: "https://gamegestures.hectorsuazo.com/",
+    github_link: "https://github.com/suzuhe481/game-gestures",
+    tech_stack: ["MediaPipe", "React", "TypeScript", "Tailwind CSS"],
+    description: `A real-time, vision-based interaction app that detects hand gestures from a live camera feed and renders cinematic, 
+  holographic visual effects in response.
+  \n &nbsp;
+
+  Inspired by the expressive gesture feedback seen in games like Death Stranding, this project explores how human motion, perception, 
+  and frontend animation systems can combine to create playful, immersive UI experiences — entirely in the browser.`,
+  },
+  {
     title: "Hackathon - Weather App",
     thumbnail_image: "/images/projects/hackathonWeatherApp.jpg",
     demo_link: "https://weathernow.hectorsuazo.com/",
