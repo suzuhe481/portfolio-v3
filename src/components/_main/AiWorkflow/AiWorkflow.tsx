@@ -37,37 +37,44 @@ export const AiWorkflow = () => {
         </motion.div>
 
         {/* Phases */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h3 className="font-plagiata text-2xl md:text-3xl text-white">
             Phases
           </h3>
-          <div className="space-y-4 mt-6">
-            {aiWorkflow.phases.map((phase, index) => (
-              <motion.div
-                key={phase.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[rgba(26,26,36,0.6)] backdrop-blur-sm border border-[rgba(148,163,184,0.1)] rounded-xl p-5 md:p-6 hover:border-[rgba(99,102,241,0.25)] transition-colors duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="shrink-0 inline-block text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 py-1 text-xs md:text-sm font-geist-mono">
-                    {String(phase.number).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-plagiata text-lg text-white font-bold mb-2">
-                      {phase.title}
-                    </p>
-                    <div className="font-geist-mono text-slate-300 text-sm md:text-base leading-relaxed [&>p]:text-slate-400">
+
+          <div className="bg-[rgba(26,26,36,0.6)] backdrop-blur-sm border border-[rgba(148,163,184,0.1)] rounded-xl px-5 md:px-6 hover:border-[rgba(99,102,241,0.25)] transition-colors duration-300 mt-6">
+            <Accordion multiple={false}>
+              {aiWorkflow.phases.map((phase) => (
+                <AccordionItem
+                  key={phase.number}
+                  value={`phase-${phase.number}`}
+                  className="border-b border-[rgba(148,163,184,0.1)] last:border-b-0"
+                >
+                  <AccordionTrigger className="font-geist-mono text-slate-200 text-sm md:text-base font-medium py-4 hover:no-underline no-underline cursor-pointer hover:text-indigo-400 aria-expanded:text-indigo-400 aria-expanded:underline transition-colors duration-200">
+                    <div className="flex items-center gap-3">
+                      <span className="shrink-0 inline-block text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 py-1 text-xs font-geist-mono">
+                        {String(phase.number).padStart(2, "0")}
+                      </span>
+                      <span className="font-plagiata text-lg font-bold">
+                        {phase.title}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="font-geist-mono text-slate-300 text-sm md:text-base leading-relaxed pb-5">
+                    <div className="[&>p]:text-slate-400 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:text-slate-400 [&_li]:mt-1">
                       <Markdown>{phase.description}</Markdown>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
-        </div>
+        </motion.div>
 
         {/* Prompt Examples */}
         <motion.div
