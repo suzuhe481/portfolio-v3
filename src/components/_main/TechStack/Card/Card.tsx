@@ -24,6 +24,7 @@ const shadowClasses = {
   GitHub: "github-shadow",
   ["Motion"]: "motion-shadow",
   Godot: "godot-shadow",
+  Claude: "claude-shadow",
 };
 
 // Adds the overlay prop.

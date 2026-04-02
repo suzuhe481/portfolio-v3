@@ -16,6 +16,7 @@ import {
   GitHubIcon,
   MotionIcon,
   GodotIcon,
+  ClaudeIcon,
 } from "@/assets/icons/TechStackIcons";
 import { Card } from "./Card/Card";
 import { CardContainer } from "./CardContainer/CardContainer";
@@ -98,6 +99,10 @@ const techStackData: ITechStackDataProps[] = [
   {
     name: "Godot",
     icon: GodotIcon,
+  },
+  {
+    name: "Claude",
+    icon: ClaudeIcon,
   },
 ];
 
