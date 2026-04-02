@@ -157,6 +157,12 @@ body {
     0 0 40px rgba(71, 140, 191, 0.2),
     inset 0 0 20px rgba(71, 140, 191, 0.1);
 }
+.claude-shadow:hover {
+  box-shadow:
+    0 0 20px rgba(193, 95, 60, 0.4),
+    0 0 40px rgba(193, 95, 60, 0.2),
+    inset 0 0 20px rgba(193, 95, 60, 0.1);
+}
 
 /* ===================================
    MARKDOWN STYLES
