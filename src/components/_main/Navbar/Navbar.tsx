@@ -114,7 +114,7 @@ export const Navbar = () => {
           <div className="w-full px-4 sm:px-6 lg:px-8 animate-all">
             <div className="flex items-center justify-between py-6">
               {/* Logo */}
-              <Link href="/" className="text-xl font-bold">
+              <Link href="/" className="text-xl font-bold font-geist-mono">
                 Hector Suazo
               </Link>
 
