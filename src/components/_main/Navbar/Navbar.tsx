@@ -11,6 +11,7 @@ import { BurgerButton } from "@/components/_main/Navbar/BurgerButton/BurgerButto
 const menuItems = [
   { label: "Home", href: "#home" },
   { label: "Tech", href: "#tech" },
+  { label: "AI Workflow", href: "#ai-workflow" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
